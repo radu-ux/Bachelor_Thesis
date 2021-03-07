@@ -1,6 +1,6 @@
 function IndexPageMainIntro() {
     return (
-        <div className="container mt-5">
+        <div className="container mt-5" style={{color: "white"}}>
             <div className="row">
                 <div className="col-sm mr-5">
                 <span>
@@ -11,7 +11,7 @@ function IndexPageMainIntro() {
                 <span><h4>Analyze already plotted data.</h4></span>
                 <span><h4>Experience new data form different sources.</h4></span>
                 <span><h4>Plot your work in a minute.</h4></span>
-                <span>Learn more</span>
+                <span> <a href="#" id="learn-more">Learn more &#x2192;</a></span>
                 </div>
             </div>
         </div>
