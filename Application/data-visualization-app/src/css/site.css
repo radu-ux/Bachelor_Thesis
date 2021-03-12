@@ -87,3 +87,51 @@ a.navbar-brand {
   #learn-more:hover {
     opacity: 1;
   }
+
+  .nav-item > a:after {
+    display: block;
+    content: "";
+    border-bottom: 2px solid rgb(229, 125, 75);
+    width: 100%;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease;
+  }
+
+  .nav-item > a:hover:after {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+
+  .presentational-layout {
+    background-color: rgb(53, 62, 88);
+    color: white;
+  }
+
+  .recommandation-btn {
+    background-color: rgb(202, 96, 79);
+    color: whitesmoke;
+  }
+
+  .recommandation-btn:hover {
+    opacity: 0.9;
+    color: whitesmoke;
+  }
+
+  #footer-nav a {
+    color: black;
+  }
+
+  #footer-nav a:hover {
+    text-decoration: none;
+    color: rgb(229, 125, 75);
+  }
+
+  #git-logo:hover {
+    opacity: 0.7;
+  }
+
+  #d3-logo:hover {
+    opacity: 0.7;
+  }
+

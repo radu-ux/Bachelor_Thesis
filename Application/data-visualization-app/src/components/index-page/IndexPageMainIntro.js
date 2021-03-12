@@ -1,6 +1,6 @@
 function IndexPageMainIntro() {
     return (
-        <div className="container mt-5" style={{color: "white"}}>
+        <div className="container mt-5">
             <div className="row">
                 <div className="col-sm mr-5">
                 <span>

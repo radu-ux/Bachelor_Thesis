@@ -1,11 +1,10 @@
-import Banner from "../../banner.svg";
-import Chart from "../../chart.png";
+import Banner from "../../assets/banner.svg";
 
 function Navigation() {
     return (
         <nav className="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-5">
             <div className="container">
-                <a className="navbar-brand" href="#"><img src={Chart}></img><img src={Banner}></img></a>
+                <a className="navbar-brand" href="#"><img src={Banner}></img></a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBarNav">
                     <span className="navbar-toggler-icon"></span>
                 </button>
