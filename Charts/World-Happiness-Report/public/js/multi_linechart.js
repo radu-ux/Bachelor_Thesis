@@ -1,12 +1,3 @@
-/*
-    Split the area of interests by continents (Europe, America and Africa)
-    Get 10 countries from each region
-    On x axis plot the years (2015 - 2019)
-    On y axis plot the happiness rank/happiness score
-
-    COUNTRIES FROM EUROPE: Italy, Romania, Spain, France, Germany, England, Switzerland, Russia, Hungary, Belgium
-*/
-
 import { DataParser } from './data_parser.js';
 
 class ChartSizing {
