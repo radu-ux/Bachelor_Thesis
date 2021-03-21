@@ -1,0 +1,149 @@
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+  }
+  
+  /* Provide sufficient contrast against white background */
+  a {
+    color: #0366d6;
+  }
+  
+  .btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+  }
+  
+  .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+  }
+  
+  /* Sticky footer styles
+  -------------------------------------------------- */
+  html {
+    font-size: 14px;
+  }
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+  
+  .border-top {
+    border-top: 1px solid #e5e5e5;
+  }
+  .border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+  }
+  
+  .box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  }
+  
+  button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+  }
+  
+  /* Sticky footer styles
+  -------------------------------------------------- */
+  html {
+    position: relative;
+    min-height: 100%;
+  }
+  
+  body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+  }
+  
+  .title-for-set-of-charts::before {
+    display: block;
+    content: "";
+    border-top: 3px solid black;
+    width: 3em;
+    margin-bottom: 1em;
+  }
+
+  #learn-more {
+    text-decoration: none;
+    color: white;
+    opacity: 0.5;
+  }
+
+  #learn-more:hover {
+    opacity: 1;
+  }
+
+  .nav-item > a:after {
+    display: block;
+    content: "";
+    border-bottom: 2px solid rgb(229, 125, 75);
+    width: 100%;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease;
+  }
+
+  .nav-item > a:hover:after {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+
+  .presentational-layout {
+    background-color: rgb(53, 62, 88);
+    color: white;
+  }
+
+  .recommandation-btn {
+    background-color: rgb(202, 96, 79);
+    color: whitesmoke;
+  }
+
+  .recommandation-btn:hover {
+    opacity: 0.9;
+    color: whitesmoke;
+  }
+
+  footer {
+    position: absolute;
+    font-size: 12px; 
+  }
+
+  #footer-nav a {
+    color: rgb(53, 62, 88);
+  }
+
+  #footer-nav a:hover {
+    text-decoration: none;
+    color: rgb(229, 125, 75);
+  }
+
+  #git-logo:hover {
+    opacity: 0.7;
+  }
+
+  #d3-logo:hover {
+    opacity: 0.7;
+  }
+
+  #line::before {
+    content: "";
+    display: block;
+    border-top: 1px solid rgb(208,208,208);
+    width: 100%;
+    margin-bottom: 1em;
+  }
