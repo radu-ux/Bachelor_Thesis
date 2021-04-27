@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <title>World Happiness Report</title>
+</head>
+<body>
+    <script type="module" src="./js/index.js"></script>
+    <div id="chart"></div>
+    <script>
+        dataset = {
+            children: [{Name:"Olives",Count:4319,ToolTipId:"id_0"},
+                {Name:"Tea",Count:4159,ToolTipId:"id_1"},
+                {Name:"Mashed Potatoes",Count:2583,ToolTipId:"id_2"},
+                {Name:"Boiled Potatoes",Count:2074,ToolTipId:"id_3"},
+                {Name:"Milk",Count:1894,ToolTipId:"id_4"},
+                {Name:"Chicken Salad",Count:1809,ToolTipId:"id_5"},
+                {Name:"Vanilla Ice Cream",Count:1713,ToolTipId:"id_6"},
+                {Name:"Cocoa",Count:1636,ToolTipId:"id_7"},
+                {Name:"Lettuce Salad",Count:1566,ToolTipId:"id_8"},
+                {Name:"Lobster Salad",Count:1511,ToolTipId:"id_9"},
+                {Name:"Chocolate",Count:1489,ToolTipId:"id_10"},
+                {Name:"Apple Pie",Count:1487,ToolTipId:"id_1"},
+                {Name:"Orange Juice",Count:1423,ToolTipId:"id_12"},
+                {Name:"American Cheese",Count:1372,ToolTipId:"id_13"},
+                {Name:"Green Peas",Count:1341,ToolTipId:"id_14"},
+                {Name:"Assorted Cakes",Count:1331,ToolTipId:"id_15"},
+                {Name:"French Fried Potatoes",Count:1328,ToolTipId:"id_16"},
+                {Name:"Potato Salad",Count:1306,ToolTipId:"id_17"},
+                {Name:"Baked Potatoes",Count:1293,ToolTipId:"id_18"},
+                {Name:"Roquefort",Count:1273,ToolTipId:"id_19"},
+                {Name:"Stewed Prunes",Count:1268,ToolTipId:"id_20"}]
+        };
+
+        
+        var diameter = 600;
+        var width = 800;
+        var height = 700;
+        var colors = d3.scaleOrdinal(d3.schemeCategory10);
+        
+        var svg = d3.select('#chart')
+                    .append('svg')
+                    .attr('width', width)
+                    .attr('height', height)
+                    .attr("text-anchor", "middle");
+
+        var bubbleLayout = d3.pack(dataset)
+                             .size([diameter, diameter])
+                             .padding(1.5);
+        var nodes = d3.hierarchy(dataset)
+                      .sum(d => d.Count);
+
+        var node = svg.selectAll(".node")
+                      .data(bubbleLayout(nodes).descendants())
+                      .enter()
+                      .append("g")
+                      .filter(d => !d.children)
+                      .attr('class', "node")
+                      .attr('transform', d => `translate(${d.x}, ${d.y})`)
+        
+        var circles = node.append('circle')
+            .attr('r', d => d.r)
+            .attr('fill', (d, i) => colors(i))
+
+        var nameText = node.append("text")
+                            .text(d => d.data.Name)
+                            .attr("fill", "white")
+                            .attr("font-size", d => {
+                                return d.r / 5;
+                            })
+        
+        var scoreText = node.append("text")
+                            .text(d => d.data.Count)
+                            .attr("dy", "1.5em")
+                            .attr("fill", "white")
+                            .attr("font-size", d => {
+                                return d.r / 5;
+                            });
+        
+        node.append("rect")
+            .attr("id", (d, i) => `id_${i}`)
+            .attr("width", 70)
+            .attr("height", 40)
+            .attr("fill", "black")
+            .attr("opacity", 0)
+        
+        const infoPanel = svg.append("g")
+                             .attr("id", "infoPanel");
+        
+        var showToolTip = (event, d) => {
+            console.log("entered")
+            infoPanel.append("rect")
+                 .attr("width", 250)
+                 .attr("height", 70)
+                 .attr("x", width-270)
+                 .transition()
+                 .duration(1000)
+                 .attr("y", 20)  
+                 .attr("fill", "whitesmoke")
+                 .attr("opacity", 0.7);
+       
+            infoPanel.append("text")
+                    .attr("x", width-170)
+                    .attr("opacity", 0)
+                    .transition()
+                    .duration(1000)
+                    .attr("opacity", 1)
+                    .attr("y", 50)
+                    .attr("fill", "black")
+                    .text("Phaiser");
+
+        }
+
+        var hideToolTip = (event, d) => {
+            infoPanel.select("rect").remove();
+            infoPanel.select("text").remove();
+        }
+
+        circles.on("mouseover", showToolTip)
+               .on("mouseout", hideToolTip);   
+
+    </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-import { DataParser } from './data_parser.js';
+import { DataParser } from '../shared/data_parser.js';
 import * as d3 from "d3";
 
 class ChartSizing {

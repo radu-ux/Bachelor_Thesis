@@ -1,3 +1,4 @@
+import { style } from "d3-selection";
 import styled from "styled-components";
 
 export const ChartTitle = styled.h1`
@@ -7,6 +8,7 @@ export const ChartTitle = styled.h1`
 export const ChartInfo = styled.div`
     display: grid;
     padding-left: 5em;
+    padding-right: 5em;
     pedding-bottom: 10em;
 `
 
@@ -17,6 +19,21 @@ export const ChartDescription = styled.div`
 
 export const Emphasise = styled.span`
     color: rgb(202, 96, 79);
+    font-weight: bold;
+`
+
+export const GreenEmphasise = styled.span`
+    color: green;
+    font-weight: bold;
+`
+
+export const YellowEmphasise = styled.span`
+    color: rgb(255, 219, 88);
+    font-weight: bold;
+`
+
+export const RedEmphasise = styled.span`
+    color: red;
     font-weight: bold;
 `
 
