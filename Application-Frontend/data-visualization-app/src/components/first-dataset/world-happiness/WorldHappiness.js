@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import Navigation from "../../shared/Navigation";
 import Footer from "../../shared/Footer";
 import BarChart from "../../../assets/World-Happines-RaceBarChart-Suggestion.svg";
+import TBDSuggestionImage from '../../../assets/TBD-Suggestion.svg';
 import { ChartTitle,ChartInfo,ChartDescription,Card,
          CardImgPlaceholder,CardText,ExploreMore,
          ExploreMoreTitle,HorizontalLine,Redirection,
@@ -34,8 +35,9 @@ function WorldHappiness() {
                     <ChartTitle>World Happiness Report</ChartTitle>
                     <ChartDescription >
                         The chart comes in the form of a <Emphasise>Race-Bar-Chart</Emphasise>.
-                        It analyzes the happiness level recorded in 9 European countries
-                        including Romania, Spain, Italy, etc. The data had been collected
+                        It reveals the first 10 most happiest countries around the world and presents the 
+                        evolution of this fact between some specific years. It ranks the countries based on a happiness score
+                        thus organizing them in a hierarchical manner. The data had been collected
                         between the years 2015-2019 and can be found <Redirection href="#">here &#x2192;</Redirection>
                         <HorizontalLine />
                     </ChartDescription>
@@ -53,17 +55,17 @@ function WorldHappiness() {
                                 <Card className="mr-4 ml-4" href="#">
                                     <div>
                                         <CardImgPlaceholder>
-                                            <img src={BarChart}></img>
+                                        <img src={TBDSuggestionImage} className="card-img-top"/>
                                         </CardImgPlaceholder>
                                         <CardText className="pt-2">
-                                            Happines rank on regions
+                                            Happiness rank on regions
                                         </CardText>
                                     </div>
                                 </Card>
                                 <Card className="mr-4 ml-4" href="#">
                                     <div>
                                         <CardImgPlaceholder>
-                                            <img src={BarChart}></img>
+                                        <img src={TBDSuggestionImage} className="card-img-top"/>
                                         </CardImgPlaceholder>
                                         <CardText className="pt-2">
                                             Level of freedom

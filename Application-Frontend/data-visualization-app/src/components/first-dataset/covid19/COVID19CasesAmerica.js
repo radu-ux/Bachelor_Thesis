@@ -35,14 +35,14 @@ function COVID19Vaccine() {
             
             <main role="main" className="mb-5">
                 <ChartInfo>
-                    <ChartTitle>COVID-19 Vaccinations</ChartTitle>
+                    <ChartTitle>COVID-19 Cases America</ChartTitle>
                     <ChartDescription >
-                        The chart comes in the form of a <Emphasise>Bubble Chart</Emphasise>.
-                        It analyzes the global situation regarding the <Emphasise>COVID-19 </Emphasise> 
-                        vaccinations last recorded in <Emphasise>2021-03-22 </Emphasise>.
-                        There is also presented information about what vaccinies had been used more 
-                        frequently. This fact is described by using a <Emphasise>Pie Chart </Emphasise>.
-                        All the data is available <Redirection href="#">here &#x2192;</Redirection>
+                        The chart comes in the form of a <Emphasise>Map Chart</Emphasise>.
+                        It analyzes the evolution of <Emphasise>COVID-19 </Emphasise> 
+                        in the counties of America. The statistic is made
+                        on the data recorded between <Emphasise>January 23,2020 </Emphasise> and
+                        <Emphasise> October 13, 2021</Emphasise>.
+                        A complete overview of the data is available <Redirection href="#">here &#x2192;</Redirection>
                         <HorizontalLine />
                     </ChartDescription>
                     <div className="pt-3 container">

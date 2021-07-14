@@ -21,6 +21,7 @@ class COVID19CasesAmerica {
         d3.json("http://localhost:3001/covid-19-cases-america-counties-albers")
         .then(us => { 
             const states_map = new Map(topojson.feature(us, us.objects.states).features.map(d => [d.properties.name.slice(0,2).toUpperCase(), d]));
+            console.log(topojson.feature(us, us.objects.states).features);
             d3.json("http://localhost:3001/covid-19-cases-america-out")
             .then(json_data => {
                 us.objects.states.geometries.forEach(s => {
@@ -162,7 +163,7 @@ class COVID19CasesAmerica {
         });
         this.max = d3.max(maxArr);
         this.data.states = new Map(d3.map(states, ({state, value}) => ([state, value])));
-        console.log(dates);
+        console.log(this.data.states);
     }
 
     createChart() {

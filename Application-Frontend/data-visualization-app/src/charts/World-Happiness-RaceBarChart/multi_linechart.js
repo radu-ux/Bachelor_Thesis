@@ -1,5 +1,6 @@
 import { DataParser } from '../shared/data_parser.js';
 import * as d3 from "d3";
+import { tree } from 'd3';
 
 class ChartSizing {
     margin = {top: 20, left: 10, bottom: 10, right: 170};
@@ -12,32 +13,38 @@ class MultiLineChart {
     constructor(fileNames) {
         this.fileNames = fileNames;
         this.maxScore = 0;
-        this.europeCountries = ['Spain', 'Italy', 'Romania', 'Switzerland', 'Germany', 'France', 'Sweden', 'Hungary', 'Russia'];
         this.data = {
             countries: [],
-            years: [2015, 2016, 2017, 2018, 2019]
+            years: [2015, 2016, 2017, 2018, 2019],
+            first_file_parsed: true
         };
     }
 
     filterData(parsedData) {
-        let i=0;
+        const sortedData = parsedData.slice().sort((a, b) => d3.descending(a.happiness_score, b.happiness_score));
 
-        this.europeCountries.forEach(country => {
-            const filterResult = parsedData.filter(d => d.country === country);
-            const filterResultCountry = filterResult[0].country 
-            const filterResultScore = filterResult[0].happiness_score;
-            const filterResultColor = filterResult[0].color;
-
-            if(this.data.countries[i] === undefined || this.data.countries[i].country_name !== filterResultCountry) {
-                this.data.countries.push({country_name: filterResultCountry, scores: [filterResultScore], rank:-1, color: filterResultColor});
-            } else {
-                this.data.countries[i].scores.push(filterResultScore);
+        if(this.data.first_file_parsed) {
+            for(let i=0; i<10; i++) {
+                const currentCountry = sortedData[i];
+                if(this.data.countries.some(country => {return country.country_name === currentCountry.country;})) {
+                    this.data.countries[i].scores.push(currentCountry.happiness_score);
+                } else {
+                    this.data.countries.push({country_name: currentCountry.country, scores: [currentCountry.happiness_score], rank:-1, color: currentCountry.color});
+                }
             }
-            i++;
-        });
+            this.data.first_file_parsed = false;
+        } else {
+            for(let i=0; i<this.data.countries.length; i++) {
+                const currentCountry = this.data.countries[i];
+                const updatedCountry = sortedData.filter(c => currentCountry.country_name === c.country);
+                console.log(updatedCountry);
+                this.data.countries[i].scores.push(updatedCountry[0].happiness_score);
+            }
+        }
     }
 
     renderChartComponents() {
+        console.log(this.data.countries)
         this.data.countries.sort((a, b) => a.scores[0] - b.scores[0]);
         this.data.countries.forEach((d, i) => d.rank = i);
 
@@ -59,10 +66,11 @@ class MultiLineChart {
         const xAxis = svg.append('g')
                          .attr('transform', `translate(0, ${sizes.margin.top})`)
                          .transition()
-                         .duration(2000)
+                         .duration(2000)    
                          .call(d3.axisTop(x));
         
-        const bars = svg.selectAll('rect').data(this.data.countries)
+        const bars = svg.selectAll('rect')
+                    .data(this.data.countries)
         bars.join('rect')
             .attr('class', 'bar')
             .attr('y', (d, i) => y(d.rank))

@@ -155,7 +155,7 @@ class COVID19Restrictions {
         this.months = new Map([
                         [1, "January"], [2, "February"], [3, "March"], 
                         [4, "April"], [5, "May",], [6, "June"], [7, "Jully"], 
-                        [8, "August"], [9, "September"], [10, "Octumber"],
+                        [8, "August"], [9, "September"], [10, "October"],
                         [11, "November"], [12, "December"]]);
         this.rects = null;
         this.tooltip = null;
@@ -211,7 +211,7 @@ class COVID19Restrictions {
         const svg = d3.select("#progressBar")
                       .append("svg")
                       .attr("transform", "translate(0 ,  80)")
-                      .attr("width", 350)
+                      .attr("width", 300)
                       .attr("height", 500)
                       .attr("viewBox", "0 0 400 500")
 
